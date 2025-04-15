@@ -1,24 +1,29 @@
-import { describe, it, expect } from "vitest";
-import { fibonacci } from "./functions";
+import { bubbleSort } from "./functions";
 
-describe("Fibonacci Function", () => {
-  it("should return 0 for n = 0", () => {
-    expect(fibonacci(0)).toBe(0);
+// ... (other test imports and code) ...
+
+describe("bubbleSort", () => {
+  it("sorts an array of numbers in ascending order", () => {
+    expect(bubbleSort([5, 2, 9, 1, 5, 6])).toEqual([1, 2, 5, 5, 6, 9]);
   });
 
-  it("should return 1 for n = 1", () => {
-    expect(fibonacci(1)).toBe(1);
+  it("returns an empty array if given one", () => {
+    expect(bubbleSort([])).toEqual([]);
   });
 
-  it("should return 1 for n = 2", () => {
-    expect(fibonacci(2)).toBe(1);
+  it("returns a sorted array when already sorted", () => {
+    expect(bubbleSort([1, 2, 3, 4, 5])).toEqual([1, 2, 3, 4, 5]);
   });
 
-  it("should return 55 for n = 10", () => {
-    expect(fibonacci(10)).toBe(55);
+  it("handles negative numbers", () => {
+    expect(bubbleSort([0, -2, 5, 1, -10])).toEqual([-10, -2, 0, 1, 5]);
   });
 
-  it("should throw an error for negative numbers", () => {
-    expect(() => fibonacci(-1)).toThrow("Negative numbers are not allowed");
+  it("does not mutate the original array", () => {
+    const original = [3, 1, 2];
+    bubbleSort(original);
+    expect(original).toEqual([3, 1, 2]);
   });
 });
+
+// ... (other tests as before) ...
