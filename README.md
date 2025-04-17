@@ -1,1 +1,6 @@
-# genie-playground
+# Project README
+<!-- (Assuming README has existing content; content preserved below this line) -->
+## The Story of Agamemnon
+Agamemnon was a legendary king of Mycenae and a central figure in Greek mythology. As the leader of the Greeks during the Trojan War, Agamemnon commanded a coalition of mighty warriors, including Achilles, Odysseus, and Menelaus, his brother. His journey to Troy was fraught with personal sacrifice—Agamemnon made the tragic decision to offer his daughter Iphigenia to appease the goddess Artemis and secure favorable winds for the Greek ships.
+During the war, Agamemnon's leadership was both lauded and criticized, especially after a dispute with Achilles over the fate of the maiden Briseis, which nearly cost the Greeks their advantage in battle. Eventually, after the fall of Troy, Agamemnon returned home, only to face betrayal at the hands of his wife, Clytemnestra, and her lover Aegisthus. The tale of Agamemnon is a powerful story of ambition, sacrifice, and the far-reaching consequences of one's choices.
+<!-- (End of README) -->
