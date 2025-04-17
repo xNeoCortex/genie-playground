@@ -1,1 +1,3 @@
 # genie-playground
+## Agamemnon's Story
+Long ago, in the age of heroes, Agamemnon reigned as king of Mycenae. When the Greeks set out to wage war on Troy, it was Agamemnon who led their mighty armada. His wisdom and resolve united feuding kings under a single banner, but fate presented harsh trials: to appease the goddess Artemis and ensure the fleet could sail, he was faced with an impossible sacrifice. The war that followed tested his leadership and stirred tensions among even the strongest allies. Agamemnon’s ambition both elevated him and, in time, became the seed of his downfall, for myths remind us that greatness and tragedy are often intertwined.
