@@ -1,14 +1,4 @@
 <old_code>
-export function fibonacci(n: number): number {
-    if (n < 0) throw new Error("Negative numbers are not allowed");
-    return n <= 1 ? n : fibonacci(n - 1) + fibonacci(n - 2);
-  }
-</old_code>
-<new_code>
-export function fibonacci(n: number): number {
-    if (n < 0) throw new Error("Negative numbers are not allowed");
-    return n <= 1 ? n : fibonacci(n - 1) + fibonacci(n - 2);
-  }
 export function bubbleSort(arr: number[]): number[] {
     // Make a copy to avoid mutating the input array
     const result = [...arr];
@@ -24,5 +14,38 @@ export function bubbleSort(arr: number[]): number[] {
         }
     }
     return result;
+}
+</old_code>
+<new_code>
+export function mergeSort(arr: number[]): number[] {
+    if (arr.length <= 1) {
+        return arr.slice();
+    }
+    const mid = Math.floor(arr.length / 2);
+    const left = mergeSort(arr.slice(0, mid));
+    const right = mergeSort(arr.slice(mid));
+    return merge(left, right);
+    function merge(left: number[], right: number[]): number[] {
+        const result: number[] = [];
+        let i = 0, j = 0;
+        while (i < left.length && j < right.length) {
+            if (left[i] < right[j]) {
+                result.push(left[i]);
+                i++;
+            } else {
+                result.push(right[j]);
+                j++;
+            }
+        }
+        while (i < left.length) {
+            result.push(left[i]);
+            i++;
+        }
+        while (j < right.length) {
+            result.push(right[j]);
+            j++;
+        }
+        return result;
+    }
 }
 </new_code>
