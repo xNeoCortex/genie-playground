@@ -5,9 +5,9 @@ export function fibonacci(n: number): number {
 }
 
 /**
- * Trie un tableau de nombres à l'aide de l'algorithme de tri par insertion.
- * Retourne un nouveau tableau et ne modifie pas l'entrée.
- * @param arr Tableau de nombres à trier
+ * Ταξινομεί έναν πίνακα αριθμών χρησιμοποιώντας τον αλγόριθμο ταξινόμησης εισαγωγής (insertion sort).
+ * Επιστρέφει έναν νέο πίνακα και δεν τροποποιεί το αρχικό δεδομένο.
+ * @param arr Πίνακας αριθμών προς ταξινόμηση
  */
 export function insertionSort(arr: number[]): number[] {
     const result = [...arr];
@@ -397,9 +397,9 @@ export function countingSort(arr: number[]): number[] {
 }
 
 /**
- * Trie un tableau d'entiers non négatifs à l'aide de l'algorithme de tri radix.
- * Ne modifie pas le tableau d'entrée. Fonctionne uniquement pour les entiers non négatifs.
- * @param arr Tableau d'entiers non négatifs à trier
+ * Ταξινομεί έναν πίνακα μη αρνητικών ακεραίων χρησιμοποιώντας τον αλγόριθμο radix sort.
+ * Δεν τροποποιεί το δοθέντα πίνακα. Λειτουργεί μόνο για μη αρνητικούς ακέραιους.
+ * @param arr Πίνακας μη αρνητικών ακεραίων προς ταξινόμηση
  */
 export function radixSort(arr: number[]): number[] {
     if (arr.length === 0) return [];
