@@ -5,8 +5,8 @@ export function fibonacci(n: number): number {
 }
 
 /**
- * Sorts an array of numbers using the insertion sort algorithm.
- * Returns a new array and does not mutate the input.
+ * Trie un tableau de nombres à l'aide de l'algorithme de tri par insertion.
+ * Retourne un nouveau tableau et ne modifie pas l'entrée.
  * @param arr Array of numbers to sort
  */
 export function insertionSort(arr: number[]): number[] {
@@ -397,8 +397,8 @@ export function countingSort(arr: number[]): number[] {
 }
 
 /**
- * Sorts an array of non-negative integers using the radix sort algorithm.
- * Does not mutate the input. Works only for non-negative integers.
+ * Trie un tableau d'entiers non négatifs à l'aide de l'algorithme de tri radix (par base).
+ * Ne modifie pas l'entrée. Fonctionne uniquement pour les entiers non négatifs.
  * @param arr Array of non-negative integers to sort
  */
 export function radixSort(arr: number[]): number[] {
