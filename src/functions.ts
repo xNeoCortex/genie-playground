@@ -24,9 +24,9 @@ export function insertionSort(arr: number[]): number[] {
 }
 
 /**
- * Sorts an array of numbers using the merge sort algorithm.
- * Returns a new array and does not mutate the input.
- * @param arr Array of numbers to sort
+ * Trie un tableau de nombres en utilisant l'algorithme de tri fusion (merge sort).
+ * Retourne un nouveau tableau et ne modifie pas le tableau d'entrée.
+ * @param arr Tableau de nombres à trier
  */
 export function mergeSort(arr: number[]): number[] {
     // Helper recursive function
