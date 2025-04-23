@@ -24,6 +24,208 @@ export function insertionSort(arr: number[]): number[] {
 }
 
 /**
+ * Sorts an array of numbers using the cocktail shaker sort algorithm (bidirectional bubble sort).
+ * Returns a new array and does not mutate the input.
+ * @param arr Array of numbers to sort
+ */
+export function cocktailShakerSort(arr: number[]): number[] {
+    const result = [...arr];
+    let start = 0;
+    let end = result.length - 1;
+    let swapped = true;
+    while (swapped) {
+        swapped = false;
+        for (let i = start; i < end; i++) {
+            if (result[i] > result[i + 1]) {
+                [result[i], result[i + 1]] = [result[i + 1], result[i]];
+                swapped = true;
+            }
+        }
+        if (!swapped) break;
+        swapped = false;
+        end--;
+        for (let i = end; i > start; i--) {
+            if (result[i] < result[i - 1]) {
+                [result[i], result[i - 1]] = [result[i - 1], result[i]];
+                swapped = true;
+            }
+        }
+        start++;
+    }
+    return result;
+}
+
+/**
+ * Sorts an array of numbers using the gnome sort algorithm.
+ * Returns a new array and does not mutate the input.
+ * @param arr Array of numbers to sort
+ */
+export function gnomeSort(arr: number[]): number[] {
+    const result = [...arr];
+    let i = 0;
+    while (i < result.length) {
+        if (i === 0 || result[i] >= result[i - 1]) {
+            i++;
+        } else {
+            [result[i], result[i - 1]] = [result[i - 1], result[i]];
+            i--;
+        }
+    }
+    return result;
+}
+
+/**
+ * Sorts an array of numbers using the comb sort algorithm.
+ * Returns a new array and does not mutate the input.
+ * @param arr Array of numbers to sort
+ */
+export function combSort(arr: number[]): number[] {
+    const result = [...arr];
+    const shrink = 1.3;
+    let gap = result.length;
+    let sorted = false;
+    while (!sorted) {
+        gap = Math.floor(gap / shrink);
+        if (gap <= 1) {
+            gap = 1;
+            sorted = true;
+        }
+        for (let i = 0; i + gap < result.length; i++) {
+            if (result[i] > result[i + gap]) {
+                [result[i], result[i + gap]] = [result[i + gap], result[i]];
+                sorted = false;
+            }
+        }
+    }
+    return result;
+}
+
+/**
+ * Sorts an array of numbers using the bucket sort algorithm.
+ * Returns a new array and does not mutate the input.
+ * For simplicity, works best for uniformly distributed data in range [0, 1).
+ * @param arr Array of numbers to sort
+ */
+export function bucketSort(arr: number[]): number[] {
+    if (arr.length === 0) return [];
+    const result = [...arr];
+    const n = result.length;
+    let min = Math.min(...arr), max = Math.max(...arr);
+    // Handle case where all numbers are equal:
+    if (min === max) return result;
+
+    // Buckets
+    const buckets: number[][] = Array.from({length: n}, () => []);
+    for (let num of result) {
+        // Normalizes num into [0,1) interval, synchronizing with n buckets
+        const idx = Math.floor(((num - min) / (max - min)) * (n - 1));
+        buckets[idx].push(num);
+    }
+    for (let bucket of buckets) {
+        bucket.sort((a, b) => a - b);
+    }
+    return ([] as number[]).concat(...buckets);
+}
+
+/**
+ * Sorts an array of numbers using the pigeonhole sort algorithm.
+ * Returns a new array and does not mutate the input.
+ * Only appropriate for small integer ranges.
+ * @param arr Array of numbers to sort
+ */
+export function pigeonholeSort(arr: number[]): number[] {
+    if (arr.length === 0) return [];
+    const min = Math.min(...arr);
+    const max = Math.max(...arr);
+    if (!arr.every(n => Number.isInteger(n))) {
+        throw new Error("Pigeonhole sort only supports integers.");
+    }
+    const holes = Array(max - min + 1).fill(0);
+    for (const num of arr) {
+        holes[num - min]++;
+    }
+    const result: number[] = [];
+    for (let i = 0; i < holes.length; i++) {
+        for (let j = 0; j < holes[i]; j++) {
+            result.push(i + min);
+        }
+    }
+    return result;
+}
+
+/**
+ * Sorts an array of numbers using the odd-even sort algorithm (brick sort).
+ * Returns a new array and does not mutate the input.
+ * @param arr Array of numbers to sort
+ */
+export function oddEvenSort(arr: number[]): number[] {
+    const result = [...arr];
+    let sorted = false;
+    while (!sorted) {
+        sorted = true;
+        // Odd index pass
+        for (let i = 1; i < result.length - 1; i += 2) {
+            if (result[i] > result[i + 1]) {
+                [result[i], result[i + 1]] = [result[i + 1], result[i]];
+                sorted = false;
+            }
+        }
+        // Even index pass
+        for (let i = 0; i < result.length - 1; i += 2) {
+            if (result[i] > result[i + 1]) {
+                [result[i], result[i + 1]] = [result[i + 1], result[i]];
+                sorted = false;
+            }
+        }
+    }
+    return result;
+}
+
+/**
+ * Sorts an array of numbers using the bitonic sort algorithm.
+ * Returns a new array (not in-place). Useful for length-powers-of-two arrays.
+ * @param arr Array of numbers to sort
+ */
+export function bitonicSort(arr: number[]): number[] {
+    function compareAndSwap(arr: number[], i: number, j: number, dir: boolean) {
+        if (dir === (arr[i] > arr[j])) {
+            [arr[i], arr[j]] = [arr[j], arr[i]];
+        }
+    }
+    function bitonicMerge(arr: number[], low: number, cnt: number, dir: boolean) {
+        if (cnt > 1) {
+            let k = Math.floor(cnt / 2);
+            for (let i = low; i < low + k; i++) {
+                compareAndSwap(arr, i, i + k, dir);
+            }
+            bitonicMerge(arr, low, k, dir);
+            bitonicMerge(arr, low + k, k, dir);
+        }
+    }
+    function _bitonicSort(arr: number[], low: number, cnt: number, dir: boolean) {
+        if (cnt > 1) {
+            let k = Math.floor(cnt / 2);
+            _bitonicSort(arr, low, k, true);
+            _bitonicSort(arr, low + k, k, false);
+            bitonicMerge(arr, low, cnt, dir);
+        }
+    }
+    // Copy and pad array to next power of two
+    let result = [...arr];
+    let n = result.length;
+    let powerOfTwo = 1;
+    while (powerOfTwo < n) {
+        powerOfTwo <<= 1;
+    }
+    for (let i = n; i < powerOfTwo; i++) {
+        result.push(Infinity);
+    }
+    _bitonicSort(result, 0, result.length, true);
+    // Filter out padding
+    return result.filter(x => x !== Infinity);
+}
+
+/**
  * Sorts an array of numbers using the merge sort algorithm.
  * Returns a new array and does not mutate the input.
  * @param arr Array of numbers to sort
