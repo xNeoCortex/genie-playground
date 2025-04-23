@@ -1,13 +1,12 @@
-
 export function fibonacci(n: number): number {
     if (n < 0) throw new Error("Negative numbers are not allowed");
     return n <= 1 ? n : fibonacci(n - 1) + fibonacci(n - 2);
 }
 
 /**
- * Sorts an array of numbers using the insertion sort algorithm.
- * Returns a new array and does not mutate the input.
- * @param arr Array of numbers to sort
+ * Trie un tableau de nombres à l'aide de l'algorithme de tri par insertion.
+ * Retourne un nouveau tableau sans modifier le tableau d'entrée.
+ * @param arr Tableau de nombres à trier
  */
 export function insertionSort(arr: number[]): number[] {
     const result = [...arr];
@@ -24,9 +23,9 @@ export function insertionSort(arr: number[]): number[] {
 }
 
 /**
- * Sorts an array of numbers using the cocktail shaker sort algorithm (bidirectional bubble sort).
- * Returns a new array and does not mutate the input.
- * @param arr Array of numbers to sort
+ * Trie un tableau de nombres à l'aide de l'algorithme cocktail shaker sort (tri à bulles bidirectionnel).
+ * Retourne un nouveau tableau sans modifier le tableau d'entrée.
+ * @param arr Tableau de nombres à trier
  */
 export function cocktailShakerSort(arr: number[]): number[] {
     const result = [...arr];
@@ -56,9 +55,9 @@ export function cocktailShakerSort(arr: number[]): number[] {
 }
 
 /**
- * Sorts an array of numbers using the gnome sort algorithm.
- * Returns a new array and does not mutate the input.
- * @param arr Array of numbers to sort
+ * Trie un tableau de nombres à l'aide de l'algorithme de tri gnome.
+ * Retourne un nouveau tableau sans modifier le tableau d'entrée.
+ * @param arr Tableau de nombres à trier
  */
 export function gnomeSort(arr: number[]): number[] {
     const result = [...arr];
@@ -75,9 +74,9 @@ export function gnomeSort(arr: number[]): number[] {
 }
 
 /**
- * Sorts an array of numbers using the comb sort algorithm.
- * Returns a new array and does not mutate the input.
- * @param arr Array of numbers to sort
+ * Trie un tableau de nombres à l'aide de l'algorithme de tri peigne (comb sort).
+ * Retourne un nouveau tableau sans modifier le tableau d'entrée.
+ * @param arr Tableau de nombres à trier
  */
 export function combSort(arr: number[]): number[] {
     const result = [...arr];
@@ -101,23 +100,23 @@ export function combSort(arr: number[]): number[] {
 }
 
 /**
- * Sorts an array of numbers using the bucket sort algorithm.
- * Returns a new array and does not mutate the input.
- * For simplicity, works best for uniformly distributed data in range [0, 1).
- * @param arr Array of numbers to sort
+ * Trie un tableau de nombres à l'aide de l'algorithme de tri par compartiments (bucket sort).
+ * Retourne un nouveau tableau sans modifier le tableau d'entrée.
+ * Pour simplifier, fonctionne mieux pour les données uniformément réparties dans l'intervalle [0, 1).
+ * @param arr Tableau de nombres à trier
  */
 export function bucketSort(arr: number[]): number[] {
     if (arr.length === 0) return [];
     const result = [...arr];
     const n = result.length;
     let min = Math.min(...arr), max = Math.max(...arr);
-    // Handle case where all numbers are equal:
+    // Gérer le cas où tous les nombres sont égaux :
     if (min === max) return result;
 
-    // Buckets
+    // Compartiments
     const buckets: number[][] = Array.from({length: n}, () => []);
     for (let num of result) {
-        // Normalizes num into [0,1) interval, synchronizing with n buckets
+        // Normalise num dans l'intervalle [0,1), synchronisé avec n compartiments
         const idx = Math.floor(((num - min) / (max - min)) * (n - 1));
         buckets[idx].push(num);
     }
@@ -128,10 +127,10 @@ export function bucketSort(arr: number[]): number[] {
 }
 
 /**
- * Sorts an array of numbers using the pigeonhole sort algorithm.
- * Returns a new array and does not mutate the input.
- * Only appropriate for small integer ranges.
- * @param arr Array of numbers to sort
+ * Trie un tableau de nombres à l'aide de l'algorithme pigeonhole sort.
+ * Retourne un nouveau tableau sans modifier le tableau d'entrée.
+ * À utiliser seulement pour de petits intervalles d'entiers.
+ * @param arr Tableau de nombres à trier
  */
 export function pigeonholeSort(arr: number[]): number[] {
     if (arr.length === 0) return [];
@@ -154,23 +153,23 @@ export function pigeonholeSort(arr: number[]): number[] {
 }
 
 /**
- * Sorts an array of numbers using the odd-even sort algorithm (brick sort).
- * Returns a new array and does not mutate the input.
- * @param arr Array of numbers to sort
+ * Trie un tableau de nombres à l'aide de l'algorithme odd-even sort (brick sort).
+ * Retourne un nouveau tableau sans modifier le tableau d'entrée.
+ * @param arr Tableau de nombres à trier
  */
 export function oddEvenSort(arr: number[]): number[] {
     const result = [...arr];
     let sorted = false;
     while (!sorted) {
         sorted = true;
-        // Odd index pass
+        // Passage des indices impairs
         for (let i = 1; i < result.length - 1; i += 2) {
             if (result[i] > result[i + 1]) {
                 [result[i], result[i + 1]] = [result[i + 1], result[i]];
                 sorted = false;
             }
         }
-        // Even index pass
+        // Passage des indices pairs
         for (let i = 0; i < result.length - 1; i += 2) {
             if (result[i] > result[i + 1]) {
                 [result[i], result[i + 1]] = [result[i + 1], result[i]];
@@ -182,9 +181,9 @@ export function oddEvenSort(arr: number[]): number[] {
 }
 
 /**
- * Sorts an array of numbers using the bitonic sort algorithm.
- * Returns a new array (not in-place). Useful for length-powers-of-two arrays.
- * @param arr Array of numbers to sort
+ * Trie un tableau de nombres à l'aide de l'algorithme bitonic sort.
+ * Retourne un nouveau tableau (pas sur place). Utile pour les tableaux de longueur puissance de deux.
+ * @param arr Tableau de nombres à trier
  */
 export function bitonicSort(arr: number[]): number[] {
     function compareAndSwap(arr: number[], i: number, j: number, dir: boolean) {
@@ -210,7 +209,7 @@ export function bitonicSort(arr: number[]): number[] {
             bitonicMerge(arr, low, cnt, dir);
         }
     }
-    // Copy and pad array to next power of two
+    // Copie et remplit le tableau jusqu'à la puissance de deux supérieure
     let result = [...arr];
     let n = result.length;
     let powerOfTwo = 1;
@@ -221,17 +220,17 @@ export function bitonicSort(arr: number[]): number[] {
         result.push(Infinity);
     }
     _bitonicSort(result, 0, result.length, true);
-    // Filter out padding
+    // Filtrer les éléments de remplissage
     return result.filter(x => x !== Infinity);
 }
 
 /**
- * Sorts an array of numbers using the merge sort algorithm.
- * Returns a new array and does not mutate the input.
- * @param arr Array of numbers to sort
+ * Trie un tableau de nombres à l'aide de l'algorithme merge sort.
+ * Retourne un nouveau tableau sans modifier le tableau d'entrée.
+ * @param arr Tableau de nombres à trier
  */
 export function mergeSort(arr: number[]): number[] {
-    // Helper recursive function
+    // Fonction récursive d'aide
     function _mergeSort(array: number[]): number[] {
         if (array.length <= 1) return array;
         const mid = Math.floor(array.length / 2);
@@ -259,9 +258,9 @@ export function mergeSort(arr: number[]): number[] {
 }
 
 /**
- * Sorts an array of numbers using the selection sort algorithm.
- * Returns a new array and does not mutate the input.
- * @param arr Array of numbers to sort
+ * Trie un tableau de nombres à l'aide de l'algorithme selection sort.
+ * Retourne un nouveau tableau sans modifier le tableau d'entrée.
+ * @param arr Tableau de nombres à trier
  */
 export function selectionSort(arr: number[]): number[] {
     const result = [...arr];
@@ -280,9 +279,9 @@ export function selectionSort(arr: number[]): number[] {
 }
 
 /**
- * Sorts an array of numbers using the bubble sort algorithm.
- * Returns a new array and does not mutate the input.
- * @param arr Array of numbers to sort
+ * Trie un tableau de nombres à l'aide de l'algorithme bubble sort.
+ * Retourne un nouveau tableau sans modifier le tableau d'entrée.
+ * @param arr Tableau de nombres à trier
  */
 export function bubbleSort(arr: number[]): number[] {
     const result = [...arr];
@@ -302,9 +301,9 @@ export function bubbleSort(arr: number[]): number[] {
 }
 
 /**
- * Sorts an array of numbers using the quick sort algorithm.
- * Returns a new array and does not mutate the input.
- * @param arr Array of numbers to sort
+ * Trie un tableau de nombres à l'aide de l'algorithme quick sort.
+ * Retourne un nouveau tableau sans modifier le tableau d'entrée.
+ * @param arr Tableau de nombres à trier
  */
 export function quickSort(arr: number[]): number[] {
     function _quickSort(array: number[]): number[] {
@@ -318,9 +317,9 @@ export function quickSort(arr: number[]): number[] {
 }
 
 /**
- * Sorts an array of numbers using the heap sort algorithm.
- * Returns a new array and does not mutate the input.
- * @param arr Array of numbers to sort
+ * Trie un tableau de nombres à l'aide de l'algorithme heap sort.
+ * Retourne un nouveau tableau sans modifier le tableau d'entrée.
+ * @param arr Tableau de nombres à trier
  */
 export function heapSort(arr: number[]): number[] {
     const result = [...arr];
@@ -349,9 +348,9 @@ export function heapSort(arr: number[]): number[] {
 }
 
 /**
- * Sorts an array of numbers using the shell sort algorithm.
- * Returns a new array and does not mutate the input.
- * @param arr Array of numbers to sort
+ * Trie un tableau de nombres à l'aide de l'algorithme shell sort.
+ * Retourne un nouveau tableau sans modifier le tableau d'entrée.
+ * @param arr Tableau de nombres à trier
  */
 export function shellSort(arr: number[]): number[] {
     const result = [...arr];
@@ -373,9 +372,9 @@ export function shellSort(arr: number[]): number[] {
 }
 
 /**
- * Sorts an array of non-negative integers using the counting sort algorithm.
- * Does not mutate the input. Works only for non-negative integers.
- * @param arr Array of non-negative integers to sort
+ * Trie un tableau d'entiers non négatifs à l'aide de l'algorithme counting sort.
+ * Ne modifie pas le tableau d'entrée. Fonctionne uniquement pour les entiers non négatifs.
+ * @param arr Tableau d'entiers non négatifs à trier
  */
 export function countingSort(arr: number[]): number[] {
     if (arr.length === 0) return [];
@@ -397,9 +396,9 @@ export function countingSort(arr: number[]): number[] {
 }
 
 /**
- * Sorts an array of non-negative integers using the radix sort algorithm.
- * Does not mutate the input. Works only for non-negative integers.
- * @param arr Array of non-negative integers to sort
+ * Trie un tableau d'entiers non négatifs à l'aide de l'algorithme radix sort.
+ * Ne modifie pas le tableau d'entrée. Fonctionne uniquement pour les entiers non négatifs.
+ * @param arr Tableau d'entiers non négatifs à trier
  */
 export function radixSort(arr: number[]): number[] {
     if (arr.length === 0) return [];
