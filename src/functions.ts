@@ -101,23 +101,23 @@ export function combSort(arr: number[]): number[] {
 }
 
 /**
- * Sorts an array of numbers using the bucket sort algorithm.
- * Returns a new array and does not mutate the input.
- * For simplicity, works best for uniformly distributed data in range [0, 1).
- * @param arr Array of numbers to sort
+ * Trie un tableau de nombres à l'aide de l'algorithme de tri par compartiments (bucket sort).
+ * Retourne un nouveau tableau et ne modifie pas l'entrée.
+ * Pour simplifier, fonctionne mieux pour des données uniformément réparties dans l'intervalle [0, 1).
+ * @param arr Tableau de nombres à trier
  */
 export function bucketSort(arr: number[]): number[] {
     if (arr.length === 0) return [];
     const result = [...arr];
     const n = result.length;
     let min = Math.min(...arr), max = Math.max(...arr);
-    // Handle case where all numbers are equal:
+    // Gère le cas où tous les nombres sont égaux :
     if (min === max) return result;
 
-    // Buckets
+    // Compartiments (buckets)
     const buckets: number[][] = Array.from({length: n}, () => []);
     for (let num of result) {
-        // Normalizes num into [0,1) interval, synchronizing with n buckets
+        // Normalise num dans l'intervalle [0,1), synchronisé avec n compartiments
         const idx = Math.floor(((num - min) / (max - min)) * (n - 1));
         buckets[idx].push(num);
     }
@@ -128,10 +128,10 @@ export function bucketSort(arr: number[]): number[] {
 }
 
 /**
- * Sorts an array of numbers using the pigeonhole sort algorithm.
- * Returns a new array and does not mutate the input.
- * Only appropriate for small integer ranges.
- * @param arr Array of numbers to sort
+ * Trie un tableau de nombres à l'aide de l'algorithme de tri par casiers (pigeonhole sort).
+ * Retourne un nouveau tableau et ne modifie pas l'entrée.
+ * Convient uniquement pour des intervalles entiers petits.
+ * @param arr Tableau de nombres à trier
  */
 export function pigeonholeSort(arr: number[]): number[] {
     if (arr.length === 0) return [];
