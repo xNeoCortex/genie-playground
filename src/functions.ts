@@ -5,9 +5,9 @@ export function fibonacci(n: number): number {
 }
 
 /**
- * Sorts an array of numbers using the insertion sort algorithm.
- * Returns a new array and does not mutate the input.
- * @param arr Array of numbers to sort
+ * Ταξινομεί έναν πίνακα αριθμών χρησιμοποιώντας τον αλγόριθμο ταξινόμησης εισαγωγής (insertion sort).
+ * Επιστρέφει έναν νέο πίνακα και δεν τροποποιεί το αρχικό δεδομένο.
+ * @param arr Πίνακας αριθμών προς ταξινόμηση
  */
 export function insertionSort(arr: number[]): number[] {
     const result = [...arr];
@@ -397,9 +397,9 @@ export function countingSort(arr: number[]): number[] {
 }
 
 /**
- * Sorts an array of non-negative integers using the radix sort algorithm.
- * Does not mutate the input. Works only for non-negative integers.
- * @param arr Array of non-negative integers to sort
+ * Ταξινομεί έναν πίνακα μη αρνητικών ακεραίων χρησιμοποιώντας τον αλγόριθμο radix sort.
+ * Δεν τροποποιεί το δοθέντα πίνακα. Λειτουργεί μόνο για μη αρνητικούς ακέραιους.
+ * @param arr Πίνακας μη αρνητικών ακεραίων προς ταξινόμηση
  */
 export function radixSort(arr: number[]): number[] {
     if (arr.length === 0) return [];
