@@ -397,9 +397,9 @@ export function countingSort(arr: number[]): number[] {
 }
 
 /**
- * Sorts an array of non-negative integers using the radix sort algorithm.
- * Does not mutate the input. Works only for non-negative integers.
- * @param arr Array of non-negative integers to sort
+ * Trie un tableau d'entiers non négatifs en utilisant l'algorithme du tri par base (radix sort).
+ * Ne modifie pas le tableau d'origine. Fonctionne uniquement pour les entiers non négatifs.
+ * @param arr Tableau d'entiers non négatifs à trier
  */
 export function radixSort(arr: number[]): number[] {
     if (arr.length === 0) return [];
