@@ -1,13 +1,12 @@
-
 export function fibonacci(n: number): number {
     if (n < 0) throw new Error("Negative numbers are not allowed");
     return n <= 1 ? n : fibonacci(n - 1) + fibonacci(n - 2);
 }
 
 /**
- * Sorts an array of numbers using the insertion sort algorithm.
- * Returns a new array and does not mutate the input.
- * @param arr Array of numbers to sort
+ * Trie un tableau de nombres à l'aide de l'algorithme de tri par insertion.
+ * Retourne un nouveau tableau sans modifier l'entrée.
+ * @param arr Tableau de nombres à trier
  */
 export function insertionSort(arr: number[]): number[] {
     const result = [...arr];
@@ -397,9 +396,9 @@ export function countingSort(arr: number[]): number[] {
 }
 
 /**
- * Sorts an array of non-negative integers using the radix sort algorithm.
- * Does not mutate the input. Works only for non-negative integers.
- * @param arr Array of non-negative integers to sort
+ * Trie un tableau d'entiers non négatifs à l'aide de l'algorithme de tri radix.
+ * Ne modifie pas le tableau d'entrée. Fonctionne uniquement pour les entiers non négatifs.
+ * @param arr Tableau d'entiers non négatifs à trier
  */
 export function radixSort(arr: number[]): number[] {
     if (arr.length === 0) return [];
