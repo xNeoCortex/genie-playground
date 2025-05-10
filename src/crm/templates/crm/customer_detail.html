@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ object.name }}</h1>
+<p>Email: {{ object.email }}</p>
+<p>Phone: {{ object.phone }}</p>
+<p>Address: {{ object.address }}</p>
+<a href="{% url 'customer-edit' object.pk %}">Edit</a>
+<a href="{% url 'customer-delete' object.pk %}">Delete</a>
+<a href="{% url 'customer-list' %}">Back to List</a>
+{% endblock %}
